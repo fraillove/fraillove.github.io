@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | FrailLove&#39;s Notes</title>
+<title>Java – Convert File to InputStream | FrailLove&#39;s Notes</title>
 <link rel="shortcut icon" href="https://fraillove.github.io/favicon.ico?v=1565022682937">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -74,23 +74,84 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              Java – Convert File to InputStream
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-01-25 ·
+                · 2019-08-06 ·
               </time>
+              
+                <a href="https://fraillove.github.io/tag/wYrGdO2vB" class="post-tag">
+                  # Java
+                </a>
+              
+                <a href="https://fraillove.github.io/tag/sRsVu0PBx" class="post-tag">
+                  # Spring
+                </a>
               
             </div>
             
             <div class="post-content">
-              <p>Less is more,<br>
-simple is beauty!</p>
+              <ol>
+<li>FileInputStream</li>
+</ol>
+<pre><code class="language-java">@Test
+public void givenUsingPlainJava_whenConvertingFileToInputStream_thenCorrect() 
+  throws IOException {
+    File initialFile = new File(&quot;src/main/resources/sample.txt&quot;);
+    InputStream targetStream = new FileInputStream(initialFile);
+}
+</code></pre>
+<ol start="2">
+<li>DataInputStream</li>
+</ol>
+<pre><code class="language-java">@Test
+public final void givenUsingPlainJava_whenConvertingFileToDataInputStream_thenCorrect() 
+  throws IOException {
+      final File initialFile = new File(&quot;src/test/resources/sample.txt&quot;);
+      final InputStream targetStream = 
+        new DataInputStream(new FileInputStream(initialFile));
+}
+</code></pre>
+<ol start="3">
+<li>SequenceInputStream</li>
+</ol>
+<pre><code class="language-java">@Test
+public final void givenUsingPlainJava_whenConvertingFileToSequenceInputStream_thenCorrect() 
+  throws IOException {
+      final File initialFile = new File(&quot;src/test/resources/sample.txt&quot;);
+      final File anotherFile = new File(&quot;src/test/resources/anothersample.txt&quot;);
+      final InputStream targetStream = new FileInputStream(initialFile);
+      final InputStream anotherTargetStream = new FileInputStream(anotherFile);
+     
+      InputStream sequenceTargetStream = 
+        new SequenceInputStream(targetStream, anotherTargetStream);
+}
+</code></pre>
+<ol start="4">
+<li>Commons IO</li>
+</ol>
+<pre><code class="language-java">@Test
+public void givenUsingGuava_whenConvertingFileToInputStream_thenCorrect() 
+  throws IOException {
+    File initialFile = new File(&quot;src/main/resources/sample.txt&quot;);
+    InputStream targetStream = Files.asByteSource(initialFile).openStream();
+}
+</code></pre>
 
             </div>
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://fraillove.github.io/post/hello-gridea">
+              <h3 class="post-title">
+                Hello Gridea
+              </h3>
+            </a>
+          </div>
         
 
         

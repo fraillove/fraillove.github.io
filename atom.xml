@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fraillove.github.io</id>
     <title>FrailLove&apos;s Notes</title>
-    <updated>2019-07-08T18:00:22.215Z</updated>
+    <updated>2019-08-05T16:31:26.733Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fraillove.github.io"/>
     <link rel="self" href="https://fraillove.github.io/atom.xml"/>
@@ -10,6 +10,60 @@
     <logo>https://fraillove.github.io/images/avatar.png</logo>
     <icon>https://fraillove.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, FrailLove&apos;s Notes</rights>
+    <entry>
+        <title type="html"><![CDATA[Java – Convert File to InputStream]]></title>
+        <id>https://fraillove.github.io/post/java-convert-file-to-inputstream</id>
+        <link href="https://fraillove.github.io/post/java-convert-file-to-inputstream">
+        </link>
+        <updated>2019-08-05T16:22:50.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>FileInputStream</li>
+</ol>
+<pre><code class="language-java">@Test
+public void givenUsingPlainJava_whenConvertingFileToInputStream_thenCorrect() 
+  throws IOException {
+    File initialFile = new File(&quot;src/main/resources/sample.txt&quot;);
+    InputStream targetStream = new FileInputStream(initialFile);
+}
+</code></pre>
+<ol start="2">
+<li>DataInputStream</li>
+</ol>
+<pre><code class="language-java">@Test
+public final void givenUsingPlainJava_whenConvertingFileToDataInputStream_thenCorrect() 
+  throws IOException {
+      final File initialFile = new File(&quot;src/test/resources/sample.txt&quot;);
+      final InputStream targetStream = 
+        new DataInputStream(new FileInputStream(initialFile));
+}
+</code></pre>
+<ol start="3">
+<li>SequenceInputStream</li>
+</ol>
+<pre><code class="language-java">@Test
+public final void givenUsingPlainJava_whenConvertingFileToSequenceInputStream_thenCorrect() 
+  throws IOException {
+      final File initialFile = new File(&quot;src/test/resources/sample.txt&quot;);
+      final File anotherFile = new File(&quot;src/test/resources/anothersample.txt&quot;);
+      final InputStream targetStream = new FileInputStream(initialFile);
+      final InputStream anotherTargetStream = new FileInputStream(anotherFile);
+     
+      InputStream sequenceTargetStream = 
+        new SequenceInputStream(targetStream, anotherTargetStream);
+}
+</code></pre>
+<ol start="4">
+<li>Commons IO</li>
+</ol>
+<pre><code class="language-java">@Test
+public void givenUsingGuava_whenConvertingFileToInputStream_thenCorrect() 
+  throws IOException {
+    File initialFile = new File(&quot;src/main/resources/sample.txt&quot;);
+    InputStream targetStream = Files.asByteSource(initialFile).openStream();
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://fraillove.github.io/post/hello-gridea</id>
