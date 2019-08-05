@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Java – Convert File to InputStream | FrailLove&#39;s Notes</title>
-<link rel="shortcut icon" href="https://fraillove.github.io/favicon.ico?v=1565023169200">
+<link rel="shortcut icon" href="https://fraillove.github.io/favicon.ico?v=1565023383369">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://fraillove.github.io/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://fraillove.github.io">
-  <img class="avatar" src="https://fraillove.github.io/images/avatar.png?v=1565023169200" alt="">
+  <img class="avatar" src="https://fraillove.github.io/images/avatar.png?v=1565023383369" alt="">
   </a>
   <h1 class="site-title">
     FrailLove&#39;s Notes
@@ -130,6 +130,16 @@ public final void givenUsingPlainJava_whenConvertingFileToSequenceInputStream_th
 </code></pre>
 <ol start="4">
 <li>Commons IO</li>
+</ol>
+<pre><code class="language-java">@Test
+public void givenUsingCommonsIO_whenConvertingFileToInputStream_thenCorrect() 
+  throws IOException {
+    File initialFile = new File(&quot;src/main/resources/sample.txt&quot;);
+    InputStream targetStream = FileUtils.openInputStream(initialFile);
+}
+</code></pre>
+<ol start="5">
+<li>Guava</li>
 </ol>
 <pre><code class="language-java">@Test
 public void givenUsingGuava_whenConvertingFileToInputStream_thenCorrect() 
